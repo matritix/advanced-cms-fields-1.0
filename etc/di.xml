@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+	<preference for="Magento\Cms\Block\Page" type="Matritix\AdvancedCmsFields\Block\Cms\Page" />
+	<preference for="Magento\Cms\Block\Block" type="Matritix\AdvancedCmsFields\Block\Cms\Block" />  
+	<preference for="Magento\Cms\Block\Widget\Block" type="Matritix\AdvancedCmsFields\Block\Widget\Block" />  
+</config>
