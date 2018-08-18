@@ -12,6 +12,23 @@
       "role": "Leader"
     }
   ],
+  "repositories": [
+    {
+        "type":"package",
+        "package": {
+          "name": "matritix/advanced-cms-fields-1.0",
+          "version":"master",
+          "source": {
+              "url": "https://github.com/matritix/advanced-cms-fields-1.0.git",
+              "type": "git",
+              "reference":"master"
+            }
+        }
+    }
+],
+"require": {
+    "matritix/advanced-cms-fields-1.0": "master"
+},
   "autoload": {
     "files": [
       "registration.php"
