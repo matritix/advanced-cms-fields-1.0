@@ -29,7 +29,7 @@
     }
 ],
 "require": {
-    "matritix/advanced-cms-fields-1.0": "master"
+    "matritix/advanced-cms-fields-1.0": "1.0.0"
 },
   "autoload": {
     "files": [
