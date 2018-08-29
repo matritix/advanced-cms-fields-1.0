@@ -1,2 +1,2 @@
 # advanced-cms-fields-1.0
-test
+OSL-3.0 Licence
