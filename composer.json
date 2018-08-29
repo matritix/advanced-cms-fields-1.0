@@ -23,14 +23,14 @@
           "source": {
               "url": "https://github.com/matritix/advanced-cms-fields-1.0.git",
               "type": "git",
-              "reference":"master"
+              "reference":"dev"
             }
         }
     }
 ],
 "require": {
     "php": ">=5.5",
-    "magento/framework": "*"
+    "matritix/advanced-cms-fields-1.0": "1.0.0.x"
 },
   "autoload": {
     "files": [
