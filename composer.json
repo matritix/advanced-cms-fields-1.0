@@ -3,7 +3,7 @@
   "description": "Magento 2 Advanced Cms Fields extension",
   "type": "magento2-module",
   "version": "1.0.0",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "license": "OSL-3.0",
   "authors": [
@@ -30,7 +30,7 @@
 ],
 "require": {
     "php": ">=5.5",
-    "matritix/advanced-cms-fields-1.0": "1.0.0.x"
+    "matritix/advanced-cms-fields-1.0": "dev-master"
 },
   "autoload": {
     "files": [
