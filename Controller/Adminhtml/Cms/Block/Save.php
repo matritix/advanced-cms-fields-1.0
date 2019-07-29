@@ -58,10 +58,8 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Block\Save
             if (isset($data['matritix_advancedform'])) {
 				if($data['matritix_advancedform']){
 					$advancedform_array = $data['matritix_advancedform'];
-
 					$advancedform_array_filter = $this->array_remove_null($advancedform_array);
 				 
-					 
 					$jsonHelper = $this->_objectManager->get('Magento\Framework\Json\Helper\Data'); 
 					 
 					$advancedform_array_filter = $this->aasort($advancedform_array_filter, "matritix_position");
@@ -73,8 +71,7 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Block\Save
 						$model->setMatritixAdvancedform($advancedform_array_filter);
 					}
 				}
-            } 
-            // fin added 
+            }//end added
 
             try {
                 $model->save();
@@ -123,15 +120,7 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Block\Save
         return $array;
 
     }//end array_remove_null()
-	
-	// function sortByWeight($a, $b)
-// {
-    // $a = $a['matritix_position'];
-    // $b = $b['matritix_position'];
-
-    // if ($a == $b) return 0;
-    // return ($a < $b) ? -1 : 1;
-// }
+	 
 
 	public function aasort(&$array, $key)
     {

@@ -59,7 +59,12 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Page\Save
 					$advancedform_array = $data['matritix_advancedform'];
 
 					$advancedform_array_filter = $this->array_remove_null($advancedform_array);
+				 
 					$jsonHelper = $this->_objectManager->get('Magento\Framework\Json\Helper\Data');
+					
+					$advancedform_array_filter = $this->aasort($advancedform_array_filter, "matritix_position");
+					$advancedform_array_filter = array_values($advancedform_array_filter);
+				 
 					$advancedform_array_filter = $jsonHelper->jsonEncode($advancedform_array_filter);
 				 
 
@@ -67,8 +72,7 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Page\Save
 						$model->setMatritixAdvancedform($advancedform_array_filter);
 					}
 				}
-            }
-            // end added
+            }// end added
 			
             $this->_eventManager->dispatch(
                 'cms_page_prepare_save',
@@ -130,6 +134,26 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Page\Save
         return $array;
 
     }//end array_remove_null()
+	 
+
+	public function aasort(&$array, $key)
+    {
+        $sorter = [];
+        $ret    = [];
+        reset($array);
+        foreach ($array as $ii => $va) {
+            $sorter[$ii] = $va[$key];
+        }
+
+        asort($sorter);
+        foreach ($sorter as $ii => $va) {
+            $ret[$ii] = $array[$ii];
+        }
+
+        $array = $ret;
+        return $array;
+
+    }//end aasort()
 
 
 }//end class

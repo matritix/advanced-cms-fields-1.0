@@ -13,8 +13,6 @@ use Magento\Framework\App\Request\DataPersistorInterface;
  */
 class DataProvider extends \Magento\Cms\Model\Page\DataProvider
 {
-
-
     /**
      * Get data
      *
