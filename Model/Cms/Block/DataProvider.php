@@ -13,8 +13,6 @@ use Magento\Framework\App\Request\DataPersistorInterface;
  */
 class DataProvider extends \Magento\Cms\Model\Block\DataProvider
 {
-
-
     /**
      * Get data
      *
@@ -40,16 +38,12 @@ class DataProvider extends \Magento\Cms\Model\Block\DataProvider
         if (isset($block)) {
             if ($this->loadedData[$block->getId()]['matritix_advancedform']) {
                 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-                if ($serializer = $objectManager->create(\Magento\Framework\Serialize\SerializerInterface::class)) {
-                     $this->loadedData[$block->getId()]['matritix_advancedform'] = $serializer->unserialize($this->loadedData[$block->getId()]['matritix_advancedform']);
-                } else {
-                    $jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
-                    $this->loadedData[$block->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$block->getId()]['matritix_advancedform']);
-                }
+				$jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
+				$this->loadedData[$block->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$block->getId()]['matritix_advancedform']);
             }
         }
-
         // end added
+		
         if (!empty($data)) {
             $block = $this->collection->getNewEmptyItem();
             $block->setData($data);

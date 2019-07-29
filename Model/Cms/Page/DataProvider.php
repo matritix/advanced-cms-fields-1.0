@@ -36,28 +36,23 @@ class DataProvider extends \Magento\Cms\Model\Page\DataProvider
 
         $data = $this->dataPersistor->get('cms_page');
 
-        if (!empty($data)) {
-            $page = $this->collection->getNewEmptyItem();
-
-            $page->setData($data);
-            $this->loadedData[$page->getId()] = $page->getData();
-            $this->dataPersistor->clear('cms_page');
-        }
-
         // added
         if (isset($page)) {
             if ($this->loadedData[$page->getId()]['matritix_advancedform']) {
                 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-                if ($serializer = $objectManager->create(\Magento\Framework\Serialize\SerializerInterface::class)) {
-                     $this->loadedData[$page->getId()]['matritix_advancedform'] = $serializer->unserialize($this->loadedData[$page->getId()]['matritix_advancedform']);
-                } else {
-                    $jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
-                    $this->loadedData[$page->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$page->getId()]['matritix_advancedform']);
-                }
+				$jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
+				$this->loadedData[$page->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$page->getId()]['matritix_advancedform']);
             }
         }
-
-        // end added
+		// end added
+		
+		if (!empty($data)) {
+            $page = $this->collection->getNewEmptyItem();
+            $page->setData($data);
+            $this->loadedData[$page->getId()] = $page->getData();
+            $this->dataPersistor->clear('cms_page');
+        }
+        
         return $this->loadedData;
 
     }//end getData()

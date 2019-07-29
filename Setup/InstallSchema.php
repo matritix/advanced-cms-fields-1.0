@@ -18,8 +18,8 @@ class InstallSchema implements InstallSchemaInterface
         $installer->startSetup();
         $connection = $installer->getConnection();
 
-        $connection->addColumn($installer->getTable('cms_page'), 'matritix_advancedform', ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 'nullable' => false, 'comment' => 'All data']);
-        $connection->addColumn($installer->getTable('cms_block'), 'matritix_advancedform', ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 'nullable' => false, 'comment' => 'All data']);
+        $connection->addColumn($installer->getTable('cms_page'), 'matritix_advancedform', ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 'nullable' => true, 'comment' => 'All data']);
+        $connection->addColumn($installer->getTable('cms_block'), 'matritix_advancedform', ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT, 'nullable' => true, 'comment' => 'All data']);
         $connection->addColumn($installer->getTable('cms_block'), 'sort_order', ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT, 'nullable' => false, 'comment' => 'Sort Block']);
 
         $tableName  = $installer->getTable('cms_page');
