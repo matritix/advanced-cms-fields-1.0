@@ -55,25 +55,25 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Page\Save
 
             // added		 
             if (isset($data['matritix_advancedform'])) {
-				if($data['matritix_advancedform']){
-					$advancedform_array = $data['matritix_advancedform'];
+                if ($data['matritix_advancedform']) {
+                    $advancedform_array = $data['matritix_advancedform'];
 
-					$advancedform_array_filter = $this->array_remove_null($advancedform_array);
-				 
-					$jsonHelper = $this->_objectManager->get('Magento\Framework\Json\Helper\Data');
-					
-					$advancedform_array_filter = $this->aasort($advancedform_array_filter, "matritix_position");
-					$advancedform_array_filter = array_values($advancedform_array_filter);
-				 
-					$advancedform_array_filter = $jsonHelper->jsonEncode($advancedform_array_filter);
-				 
+                    $advancedform_array_filter = $this->array_remove_null($advancedform_array);
 
-					if ($advancedform_array_filter) {
-						$model->setMatritixAdvancedform($advancedform_array_filter);
-					}
-				}
-            }// end added
-			
+                    $jsonHelper = $this->_objectManager->get('Magento\Framework\Json\Helper\Data');
+
+                    $advancedform_array_filter = $this->aasort($advancedform_array_filter, "matritix_position");
+                    $advancedform_array_filter = array_values($advancedform_array_filter);
+
+                    $advancedform_array_filter = $jsonHelper->jsonEncode($advancedform_array_filter);
+
+
+                    if ($advancedform_array_filter) {
+                        $model->setMatritixAdvancedform($advancedform_array_filter);
+                    }
+                }
+            } // end added
+
             $this->_eventManager->dispatch(
                 'cms_page_prepare_save',
                 [
@@ -104,18 +104,17 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Page\Save
 
             $this->dataPersistor->set('cms_page', $data);
             return $resultRedirect->setPath('*/*/edit', ['page_id' => $this->getRequest()->getParam('page_id')]);
-        }//end if
+        } //end if
 
         return $resultRedirect->setPath('*/*/');
-
-    }//end execute()
+    } //end execute()
 
 
     public function array_remove_null($array)
     {
         foreach ($array as $key => $value) {
             if ($key == "matritix_position" && $value == '') {
-                 $array[$key] = '0';
+                $array[$key] = '0';
             } else {
                 if (is_string($value) && $value == '') {
                     unset($array[$key]);
@@ -132,11 +131,10 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Page\Save
         }
 
         return $array;
+    } //end array_remove_null()
 
-    }//end array_remove_null()
-	 
 
-	public function aasort(&$array, $key)
+    public function aasort(&$array, $key)
     {
         $sorter = [];
         $ret    = [];
@@ -152,8 +150,7 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Page\Save
 
         $array = $ret;
         return $array;
-
-    }//end aasort()
+    } //end aasort()
 
 
 }//end class

@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace Matritix\AdvancedCmsFields\Model\Cms\Page;
 
 use Magento\Cms\Model\ResourceModel\Page\CollectionFactory;
@@ -38,22 +40,21 @@ class DataProvider extends \Magento\Cms\Model\Page\DataProvider
         if (isset($page)) {
             if ($this->loadedData[$page->getId()]['matritix_advancedform']) {
                 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-				$jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
-				$this->loadedData[$page->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$page->getId()]['matritix_advancedform']);
+                $jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
+                $this->loadedData[$page->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$page->getId()]['matritix_advancedform']);
             }
         }
-		// end added
-		
-		if (!empty($data)) {
+        // end added
+
+        if (!empty($data)) {
             $page = $this->collection->getNewEmptyItem();
             $page->setData($data);
             $this->loadedData[$page->getId()] = $page->getData();
             $this->dataPersistor->clear('cms_page');
         }
-        
-        return $this->loadedData;
 
-    }//end getData()
+        return $this->loadedData;
+    } //end getData()
 
 
 }//end class

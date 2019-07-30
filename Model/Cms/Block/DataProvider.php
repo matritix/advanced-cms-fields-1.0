@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace Matritix\AdvancedCmsFields\Model\Cms\Block;
 
 use Magento\Cms\Model\ResourceModel\Block\CollectionFactory;
@@ -38,12 +40,12 @@ class DataProvider extends \Magento\Cms\Model\Block\DataProvider
         if (isset($block)) {
             if ($this->loadedData[$block->getId()]['matritix_advancedform']) {
                 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-				$jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
-				$this->loadedData[$block->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$block->getId()]['matritix_advancedform']);
+                $jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
+                $this->loadedData[$block->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$block->getId()]['matritix_advancedform']);
             }
         }
         // end added
-		
+
         if (!empty($data)) {
             $block = $this->collection->getNewEmptyItem();
             $block->setData($data);
@@ -52,8 +54,7 @@ class DataProvider extends \Magento\Cms\Model\Block\DataProvider
         }
 
         return $this->loadedData;
-
-    }//end getData()
+    } //end getData()
 
 
 }//end class

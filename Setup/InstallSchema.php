@@ -2,8 +2,6 @@
 
 namespace Matritix\AdvancedCmsFields\Setup;
 
-
-
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -38,8 +36,7 @@ class InstallSchema implements InstallSchemaInterface
         }
 
         $installer->endSetup();
-
-    }//end install()
+    } //end install()
 
 
 }//end class
