@@ -24,7 +24,7 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Block\Save
      * Save action
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @return                                       \Magento\Framework\Controller\ResultInterface
+     * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
@@ -54,30 +54,25 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Block\Save
 
             $model->setData($data);
 
-            // added
-            /*
-                $matritix_block_order = $this->getRequest()->getParam('matritix_block_order');
-                if($matritix_block_order){
-                $model->setSortOrder($matritix_block_order);
-            } */
+            // added 
             if (isset($data['matritix_advancedform'])) {
-                $advancedform_array = $data['matritix_advancedform'];
+                if ($data['matritix_advancedform']) {
+                    $advancedform_array = $data['matritix_advancedform'];
+                    $advancedform_array_filter = $this->array_remove_null($advancedform_array);
 
-                $advancedform_array_filter = $this->array_remove_null($advancedform_array);
-
-                if ($serializer = $this->_objectManager->create(\Magento\Framework\Serialize\SerializerInterface::class)) {
-                    $advancedform_array_filter = $serializer->serialize($advancedform_array_filter);
-                } else {
                     $jsonHelper = $this->_objectManager->get('Magento\Framework\Json\Helper\Data');
+
+                    $advancedform_array_filter = $this->aasort($advancedform_array_filter, "matritix_position");
+                    $advancedform_array_filter = array_values($advancedform_array_filter);
+
                     $advancedform_array_filter = $jsonHelper->jsonEncode($advancedform_array_filter);
-                }
 
-                if ($advancedform_array_filter) {
-                    $model->setMatritixAdvancedform($advancedform_array_filter);
+                    if ($advancedform_array_filter) {
+                        $model->setMatritixAdvancedform($advancedform_array_filter);
+                    }
                 }
-            }
+            } //end added
 
-            // fin added
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the block.'));
@@ -95,18 +90,17 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Block\Save
 
             $this->dataPersistor->set('cms_block', $data);
             return $resultRedirect->setPath('*/*/edit', ['block_id' => $this->getRequest()->getParam('block_id')]);
-        }//end if
+        } //end if
 
         return $resultRedirect->setPath('*/*/');
-
-    }//end execute()
+    } //end execute()
 
 
     public function array_remove_null($array)
     {
         foreach ($array as $key => $value) {
             if ($key == "matritix_position" && $value == '') {
-                 $array[$key] = '0';
+                $array[$key] = '0';
             } else {
                 if (is_string($value) && $value == '') {
                     unset($array[$key]);
@@ -123,8 +117,26 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Block\Save
         }
 
         return $array;
+    } //end array_remove_null()
 
-    }//end array_remove_null()
+
+    public function aasort(&$array, $key)
+    {
+        $sorter = [];
+        $ret    = [];
+        reset($array);
+        foreach ($array as $ii => $va) {
+            $sorter[$ii] = $va[$key];
+        }
+
+        asort($sorter);
+        foreach ($sorter as $ii => $va) {
+            $ret[$ii] = $array[$ii];
+        }
+
+        $array = $ret;
+        return $array;
+    } //end aasort()
 
 
 }//end class

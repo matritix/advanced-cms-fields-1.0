@@ -11,7 +11,7 @@ define(
 
         return select.extend(
             {
-
+ 
                 myChange : function (elements) {
                     $(elements).change(
                         $.proxy(
@@ -29,20 +29,21 @@ define(
                                     arr,
                                     function ( i, val ) {
                                         var field = uiRegistry.get("dataScope = data.matritix_advancedform." + parentSelect + "." + val + "");
-
-                                        if (field.visibleValue == valueSelect) {
-                                               field.show();
-                                        } else {
-                                              field.hide();
-                                        }
+										if(field){
+											if (field.visibleValue == valueSelect) {
+												   field.show();
+											} else {
+												  field.hide();
+											}
+										}
                                     }
                                 );
                             },
                             this
                         )
                     );
-
-                    $(elements).trigger('change');
+					setTimeout(function(){ $(elements).trigger('change'); }, 1000);
+					
                 },
                 /**
                  * On value change handler.
@@ -50,7 +51,7 @@ define(
                  * @param {String} value
                  */
                 onUpdate: function (value) {
-
+					
                     return this._super();
                 },
             }
