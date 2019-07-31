@@ -2,7 +2,7 @@
   "name": "matritix/advanced-cms-fields-1.0",
   "description": "Magento 2 Advanced Cms Fields extension",
   "type": "magento2-module",
-  "version": "1.0.0.x-dev",
+  "version": "1.0.0",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "license": "GPL-3.0",
