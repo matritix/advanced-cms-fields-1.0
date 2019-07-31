@@ -1,8 +1,10 @@
 {
-  "name": "matritix/advanced-cms-fields",
+  "name": "matritix/advanced-cms-fields-1.0",
   "description": "Magento 2 Advanced Cms Fields extension",
   "type": "magento2-module",
-  "version": "1.0.0",
+  "version": "1.0.0.x-dev",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "license": "GPL-3.0",
   "authors": [
     {
@@ -12,6 +14,24 @@
       "role": "Leader"
     }
   ],
+  "repositories": [
+    {
+        "type":"package",
+        "package": {
+          "name": "matritix/advanced-cms-fields-1.0",
+          "version":"master",
+          "source": {
+              "url": "https://github.com/matritix/advanced-cms-fields-1.0.git",
+              "type": "git",
+              "reference":"dev"
+            }
+        }
+    }
+],
+"require": {
+    "php": ">=5.5",
+    "matritix/advanced-cms-fields-1.0": "dev-master"
+},
   "autoload": {
     "files": [
       "registration.php"
