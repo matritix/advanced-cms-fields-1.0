@@ -57,6 +57,7 @@ class Block extends \Magento\Cms\Block\Block
                     } else {
                         $orderpage = $block->getSortOrder();
                     } 
+		    $matritix_level_sorter = 0;
 
                     foreach ($allContent as $singleContent) {
                         $classesContent      = 'class="matritix_block_field"';
