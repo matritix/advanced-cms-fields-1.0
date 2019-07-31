@@ -3,7 +3,7 @@
   "description": "Magento 2 Advanced Cms Fields extension",
   "type": "magento2-module",
   "version": "1.0.0",
-  "license": "GPL-3.0",
+  "license": "OSL-3.0",
   "authors": [
     {
       "name": "matritix",
