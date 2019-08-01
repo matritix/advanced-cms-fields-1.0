@@ -29,8 +29,7 @@
     }
 ],
 "require": {
-    "php": ">=5.5",
-    "matritix/advanced-cms-fields-1.0": "dev-master"
+    "php": ">=5.5"
 },
   "autoload": {
     "files": [
