@@ -111,25 +111,29 @@ class Save extends \Magento\Cms\Controller\Adminhtml\Page\Save
 
 
     public function array_remove_null($array)
-    {
+    {  
         foreach ($array as $key => $value) {
-            if ($key == "matritix_position" && $value == '') {
+            if ($key == "matritix_position" && $value == '') { 
                 $array[$key] = '0';
-            } else {
-                if (is_string($value) && $value == '') {
-                    unset($array[$key]);
-                }
+            }   
+			else{ 
+				if (is_string($value) && $value == '') {
+					unset($array[$key]);
+				}
 
-                if (is_array($value)) {
-                    $array[$key] = $this->array_remove_null($value);
-                }
+				if (is_array($value)) {
+					$array[$key] = $this->array_remove_null($value);
+				}
 
-                if (isset($array[$key]) && count($array[$key]) == 0) {
-                    unset($array[$key]);
-                }
-            }
-        }
-
+				if (isset($array[$key])){
+					if(is_array($array[$key])){
+						if (count($array[$key]) == 0) {	
+							unset($array[$key]);
+						}
+					}
+				}
+			}
+        } 
         return $array;
     } //end array_remove_null()
 
