@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Matritix\AdvancedCmsFields\Model\ImagesUploader">
+		<arguments>
+			<argument name="baseTmpPath" xsi:type="string">advancedCmsFields/tmp/images</argument>
+			<argument name="basePath" xsi:type="string">advancedCmsFields/images</argument> 
+		</arguments>
+	</type>
+	<type name="Matritix\AdvancedCmsFields\Model\FilesUploader">
+		<arguments> 
+			<argument name="baseTmpPath" xsi:type="string">advancedCmsFields/tmp/files</argument>
+			<argument name="basePath" xsi:type="string">advancedCmsFields/files</argument> 
+		</arguments>
+	</type>
+	
+    <!-- <preference for="Magento\Cms\Controller\Adminhtml\Page\Save" type="Matritix\AdvancedCmsFields\Controller\Adminhtml\Cms\Page\Save" /> -->
+    <preference for="Magento\Cms\Model\Page\DataProvider" type="Matritix\AdvancedCmsFields\Model\Cms\Page\DataProvider" />
+	
+    <!-- <preference for="Magento\Cms\Controller\Adminhtml\Block\Save" type="Matritix\AdvancedCmsFields\Controller\Adminhtml\Cms\Block\Save" /> -->
+    <preference for="Magento\Cms\Model\Block\DataProvider" type="Matritix\AdvancedCmsFields\Model\Cms\Block\DataProvider" />	
+</config>
