@@ -25,31 +25,30 @@ class DataProvider extends \Magento\Cms\Model\Page\DataProvider
         if (isset($this->loadedData)) {
             return $this->loadedData;
         }
-
         $items = $this->collection->getItems();
-        /*
-         * @var $page \Magento\Cms\Model\Page
-         */
         foreach ($items as $page) {
             $this->loadedData[$page->getId()] = $page->getData();
-        }
-
-        $data = $this->dataPersistor->get('cms_page');
-
-        // added
-        if (isset($page)) {
-            if ($this->loadedData[$page->getId()]['matritix_advancedform']) {
+            if ($page->getCustomLayoutUpdateXml() || $page->getLayoutUpdateXml()) {
+                //Deprecated layout update exists.
+                $this->loadedData[$page->getId()]['layout_update_selected'] = '_existing_';
+            }
+		  if ($this->loadedData[$page->getId()]['matritix_advancedform']) {
+	 
                 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
                 $jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
                 $this->loadedData[$page->getId()]['matritix_advancedform'] = $jsonHelper->jsonDecode($this->loadedData[$page->getId()]['matritix_advancedform']);
+	
             }
         }
-        // end added
-
+ 
+        $data = $this->dataPersistor->get('cms_page');
         if (!empty($data)) {
             $page = $this->collection->getNewEmptyItem();
             $page->setData($data);
             $this->loadedData[$page->getId()] = $page->getData();
+            if ($page->getCustomLayoutUpdateXml() || $page->getLayoutUpdateXml()) {
+                $this->loadedData[$page->getId()]['layout_update_selected'] = '_existing_';
+            }
             $this->dataPersistor->clear('cms_page');
         }
 

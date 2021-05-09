@@ -13,9 +13,9 @@
 		</arguments>
 	</type>
 	
-    <preference for="Magento\Cms\Controller\Adminhtml\Page\Save" type="Matritix\AdvancedCmsFields\Controller\Adminhtml\Cms\Page\Save" />
+    <!-- <preference for="Magento\Cms\Controller\Adminhtml\Page\Save" type="Matritix\AdvancedCmsFields\Controller\Adminhtml\Cms\Page\Save" /> -->
     <preference for="Magento\Cms\Model\Page\DataProvider" type="Matritix\AdvancedCmsFields\Model\Cms\Page\DataProvider" />
 	
-    <preference for="Magento\Cms\Controller\Adminhtml\Block\Save" type="Matritix\AdvancedCmsFields\Controller\Adminhtml\Cms\Block\Save" />
+    <!-- <preference for="Magento\Cms\Controller\Adminhtml\Block\Save" type="Matritix\AdvancedCmsFields\Controller\Adminhtml\Cms\Block\Save" /> -->
     <preference for="Magento\Cms\Model\Block\DataProvider" type="Matritix\AdvancedCmsFields\Model\Cms\Block\DataProvider" />	
 </config>

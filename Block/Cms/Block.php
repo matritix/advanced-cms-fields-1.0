@@ -49,7 +49,7 @@ class Block extends \Magento\Cms\Block\Block
 					$allContent = $jsonHelper->jsonDecode($block->getMatritixAdvancedform());
                
 
-					$allContent = $this->aasort($allContent, "matritix_position");
+					$allContent = $this->aasort($allContent, "position");
 
                     if ($htmlContentPass == false && !$block->getSortOrder()) {
                         $html           .= $this->_filterProvider->getBlockFilter()->setStoreId($storeId)->filter($block->getContent());
@@ -57,7 +57,8 @@ class Block extends \Magento\Cms\Block\Block
                     } else {
                         $orderpage = $block->getSortOrder();
                     } 
-                    $matritix_level_sorter = 0;
+		    $matritix_level_sorter = 0;
+
                     foreach ($allContent as $singleContent) {
                         $classesContent      = 'class="matritix_block_field"';
                         $classesContent      = '';
@@ -116,8 +117,8 @@ class Block extends \Magento\Cms\Block\Block
                             $matritix_link_text = $singleContent['matritix_link_text'];
                         }
 
-                        if (isset($singleContent['matritix_position'])) {
-                            $matritix_position = $singleContent['matritix_position'];
+                        if (isset($singleContent['position'])) {
+                            $matritix_position = $singleContent['position'];
                         }
 						
                         if ($htmlContentPass == false && $orderpage <= $matritix_position) {

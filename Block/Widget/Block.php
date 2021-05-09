@@ -59,7 +59,7 @@ class Block extends \Magento\Cms\Block\Widget\Block
                     $objectManager   = \Magento\Framework\App\ObjectManager::getInstance();
                     $jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
                     $allContent = $jsonHelper->jsonDecode($block->getMatritixAdvancedform());
-                    $allContent = $this->aasort($allContent, "matritix_position");
+                    $allContent = $this->aasort($allContent, "position");
 
                     if ($htmlContentPass == false && !$block->getSortOrder()) {
                         $html           .= $this->_filterProvider->getBlockFilter()->setStoreId($storeId)->filter($block->getContent());
@@ -85,6 +85,7 @@ class Block extends \Magento\Cms\Block\Widget\Block
                         $matritix_tag   = '';
                         $classesContentTag = '';
                         $matritix_level = 0;
+						$classesSimple = '';
 
                         if (isset($singleContent['matritix_level'])) {
                             $matritix_level = $singleContent['matritix_level'];
@@ -128,8 +129,8 @@ class Block extends \Magento\Cms\Block\Widget\Block
                             $matritix_link_text = $singleContent['matritix_link_text'];
                         }
 
-                        if (isset($singleContent['matritix_position'])) {
-                            $matritix_position = $singleContent['matritix_position'];
+                        if (isset($singleContent['position'])) {
+                            $matritix_position = $singleContent['position'];
                         }
 
                         if ($htmlContentPass == false && $orderpage <= $matritix_position) {
@@ -153,6 +154,83 @@ class Block extends \Magento\Cms\Block\Widget\Block
                             }
                         }
 
+
+
+
+                        switch ($singleContent['matritix_selecttype']) {
+                            case 0:
+                                $html .= $matritix_text;
+                                break;
+                            case 1:
+                                $html .= $matritix_textarea;
+                                break;
+                            case 2:
+                                $html .= '<a ' . $classesContent . ' href="' . $matritix_link_href . '" target="_blank" title="' . $matritix_link_text . '">' . $matritix_link_text . '</a>';
+                                break;
+                            case 3:
+                                $html .= '<img ' . $classesContent . ' alt="' . $matritix_image_text . '" src="' . $matritix_image . '" />';
+                                break;
+                            case 4:
+                                $html .= '<a ' . $classesContent . ' href="' . $matritix_file . '" target="_blank" title="' . $matritix_file_text . '">' . $matritix_file_text . '</a>';
+                                break;
+                        }
+                        if (isset($singleContent['matritix_tag'])) {
+                            $html .= '</' . $singleContent['matritix_tag'] . '>';
+                        } else {
+                            if ($singleContent['matritix_selecttype'] == 1 || $singleContent['matritix_selecttype'] == 2) {
+                                $html .= '</div>';
+                            }
+                        }
+
+
+                        $matritix_level_sorter = $matritix_level;
+                    } //end foreach
+
+                    for ($i = 0; $i < $matritix_level_sorter; $i++) {
+                        $html .= '</div>';
+                    }
+
+                    if ($htmlContentPass == false) {
+                        $html           .= $this->_filterProvider->getBlockFilter()->setStoreId($storeId)->filter($block->getContent());
+                        $htmlContentPass = true;
+                    }
+                } else {
+                    $html = $this->_filterProvider->getBlockFilter()->setStoreId($storeId)->filter($block->getContent());
+                } //end if
+
+                $this->setText(
+                    $this->_filterProvider->getBlockFilter()->setStoreId($storeId)->filter($html)
+                );
+
+                $this->setDivClass($block->getData('identifier'));
+            } //end if
+        } //end if
+
+        unset(self::$_widgetUsageMap[$blockHash]);
+        return $this;
+    } //end _beforeToHtml()
+
+
+    public function aasort(&$array, $key)
+    {
+        $sorter = [];
+        $ret    = [];
+        reset($array);
+        foreach ($array as $ii => $va) {
+            $sorter[$ii] = $va[$key];
+        }
+
+        asort($sorter);
+        foreach ($sorter as $ii => $va) {
+            $ret[$ii] = $array[$ii];
+        }
+
+        $array = $ret;
+        return $array;
+    } //end aasort()
+
+
+}//end class
 
 
 

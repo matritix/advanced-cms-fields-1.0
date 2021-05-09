@@ -37,7 +37,7 @@ class Page extends \Magento\Cms\Block\Page
 			$objectManager   = \Magento\Framework\App\ObjectManager::getInstance();
 			$jsonHelper = $objectManager->get('Magento\Framework\Json\Helper\Data');
 			$allContent = $jsonHelper->jsonDecode($this->getPage()->getMatritixAdvancedform());
-			$allContent = $this->aasort($allContent, "matritix_position");
+			$allContent = $this->aasort($allContent, "position");
 
 			if ($htmlContentPass == false && !$this->getPage()->getSortOrder()) {
 				$html           .= '<div class="origin_content_page">' . $this->_filterProvider->getPageFilter()->setStoreId($storeId)->filter($this->getPage()->getContent()) . '</div>';
@@ -63,6 +63,7 @@ class Page extends \Magento\Cms\Block\Page
 				$matritix_tag   = '';
 				$classesContentTag = '';
 				$matritix_level = 0;
+				$classesSimple = '';
 
 				if (isset($singleContent['matritix_level'])) {
 					$matritix_level = $singleContent['matritix_level'];
@@ -106,8 +107,8 @@ class Page extends \Magento\Cms\Block\Page
 					$matritix_link_text = $singleContent['matritix_link_text'];
 				}
 
-				if (isset($singleContent['matritix_position'])) {
-					$matritix_position = $singleContent['matritix_position'];
+				if (isset($singleContent['position'])) {
+					$matritix_position = $singleContent['position'];
 				}
 
 				if ($htmlContentPass == false && $orderpage <= $matritix_position) {
