@@ -34,57 +34,49 @@ class ImagesUploader
             'gif',
             'png',
         ];
-
-    }//end __construct()
+    } //end __construct()
 
 
     public function setBaseTmpPath($baseTmpPath)
     {
         $this->baseTmpPath = $baseTmpPath;
-
-    }//end setBaseTmpPath()
+    } //end setBaseTmpPath()
 
 
     public function setBasePath($basePath)
     {
         $this->basePath = $basePath;
-
-    }//end setBasePath()
+    } //end setBasePath()
 
 
     public function setAllowedExtensions($allowedExtensions)
     {
         $this->allowedExtensions = $allowedExtensions;
-
-    }//end setAllowedExtensions()
+    } //end setAllowedExtensions()
 
 
     public function getBaseTmpPath()
     {
         return $this->baseTmpPath;
-
-    }//end getBaseTmpPath()
+    } //end getBaseTmpPath()
 
 
     public function getBasePath()
     {
         return $this->basePath;
-
-    }//end getBasePath()
+    } //end getBasePath()
 
 
     public function getAllowedExtensions()
     {
         return $this->allowedExtensions;
-
-    }//end getAllowedExtensions()
+    } //end getAllowedExtensions()
 
 
     public function getFilePath($path, $imageName)
     {
-        return rtrim($path, '/').'/'.ltrim($imageName, '/');
-
-    }//end getFilePath()
+        return rtrim($path, '/') . '/' . ltrim($imageName, '/');
+    } //end getFilePath()
 
 
     public function moveFileFromTmp($imageName)
@@ -109,8 +101,7 @@ class ImagesUploader
         }
 
         return $imageName;
-
-    }//end moveFileFromTmp()
+    } //end moveFileFromTmp()
 
 
     public function saveFileToTmpDir($fileId)
@@ -132,11 +123,11 @@ class ImagesUploader
             ->getStore()
             ->getBaseUrl(
                 \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-            ).$this->getFilePath($baseTmpPath, $result['file']);
+            ) . $this->getFilePath($baseTmpPath, $result['file']);
         $result['name']     = $result['file'];
         if (isset($result['file'])) {
             try {
-                $relativePath = rtrim($baseTmpPath, '/').'/'.ltrim($result['file'], '/');
+                $relativePath = rtrim($baseTmpPath, '/') . '/' . ltrim($result['file'], '/');
                 $this->coreFileStorageDatabase->saveFile($relativePath);
             } catch (\Exception $e) {
                 $this->logger->critical($e);
@@ -147,8 +138,7 @@ class ImagesUploader
         }
 
         return $result;
-
-    }//end saveFileToTmpDir()
+    } //end saveFileToTmpDir()
 
 
 }//end class

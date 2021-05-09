@@ -1,4 +1,5 @@
 <?php
+
 namespace Matritix\AdvancedCmsFields\Model\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
@@ -36,8 +37,7 @@ class Options implements ArrayInterface
         ];
 
         return $options;
-
-    }//end toOptionArray()
+    } //end toOptionArray()
 
 
 }//end class

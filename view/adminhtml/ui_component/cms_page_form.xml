@@ -3,11 +3,10 @@
 /**
 * Copyright © 2013-2017 Magento, Inc. All rights reserved.
 * See COPYING.txt for license details.
-*/
+*/ 
 -->
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 <fieldset name="content">
-	
 	<field name="sort_order">
 		<argument name="data" xsi:type="array">
 			<item name="config" xsi:type="array">
@@ -24,9 +23,8 @@
 				</item>				
 			</item>
 		</argument>
-	</field> 	 
- 
-    <container name="matritix_advancedform">
+	</field>
+	<container name="matritix_advancedform">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows</item>
@@ -41,10 +39,8 @@
                     <item name="template" xsi:type="string">ui/dynamic-rows/cells/dnd</item>
                     <item name="enabled" xsi:type="boolean">true</item>
                 </item>
-				
             </item>
         </argument>
-		
         <container name="record">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -53,10 +49,9 @@
                     <item name="isTemplate" xsi:type="boolean">true</item>
                     <item name="is_collection" xsi:type="boolean">true</item>
                     <item name="showFallbackReset" xsi:type="boolean">false</item>
-					   <item name="componentType" xsi:type="string">container</item>
+					<item name="componentType" xsi:type="string">container</item>
                 </item>
             </argument>  
- 
 			<field name="matritix_selecttype">
 				<argument name="data" xsi:type="array">
 					<item name="options" xsi:type="object">Matritix\AdvancedCmsFields\Model\Config\Source\Options</item>
@@ -76,8 +71,6 @@
 					</item>
 				</argument>
 			</field>
-			 
-
 			<field name="matritix_text">
 				<argument name="data" xsi:type="array">
 					<item name="config" xsi:type="array">
@@ -221,24 +214,126 @@
 						<item name="placeholder" xsi:type="string">Class separed by space</item> 
 					</item>
 				</argument>
-			</field>	 
-			<field name="matritix_order">
+			</field>	
+			<field name="matritix_tag">
 				<argument name="data" xsi:type="array">
-					<item name="config" xsi:type="array">
-						<item name="label" xsi:type="string" translate="true">Position</item>
-						<item name="dataType" xsi:type="string">text</item>
-						<item name="formElement" xsi:type="string">input</item>
-						<item name="dataScope" xsi:type="string">matritix_position</item>
-						<item name="component" xsi:type="string">Magento_Catalog/js/form/element/input</item> 
-						<item name="visible" xsi:type="boolean">true</item> 
-						<item name="colspan" xsi:type="string">1</item>
-						<item name="placeholder" xsi:type="string">order of element</item> 
-						<item name="validation" xsi:type="array">
-							<item name="validate-digits" xsi:type="boolean">true</item>
+					<item name="options" xsi:type="array">
+						<item name="0" xsi:type="array">
+							<item name="label" xsi:type="string">Default</item>
+							<item name="value" xsi:type="string"></item>
 						</item>
-					</item>
+						<item name="1" xsi:type="array">
+							<item name="label" xsi:type="string">Div</item>
+							<item name="value" xsi:type="string">div</item>
+						</item>
+						<item name="2" xsi:type="array">
+							<item name="label" xsi:type="string">Span</item>
+							<item name="value" xsi:type="string">span</item>
+						</item>
+						<item name="3" xsi:type="array">
+							<item name="label" xsi:type="string">P</item>
+							<item name="value" xsi:type="string">p</item>
+						</item>
+						<item name="4" xsi:type="array">
+							<item name="label" xsi:type="string">h1</item>
+							<item name="value" xsi:type="string">h1</item>
+						</item>
+						<item name="5" xsi:type="array">
+							<item name="label" xsi:type="string">h2</item>
+							<item name="value" xsi:type="string">h2</item>
+						</item>
+						<item name="6" xsi:type="array">
+							<item name="label" xsi:type="string">h3</item>
+							<item name="value" xsi:type="string">h3</item>
+						</item>
+						<item name="7" xsi:type="array">
+							<item name="label" xsi:type="string">h4</item>
+							<item name="value" xsi:type="string">h4</item>
+						</item>
+						<item name="8" xsi:type="array">
+							<item name="label" xsi:type="string">h5</item>
+							<item name="value" xsi:type="string">h5</item>
+						</item>
+					</item> 
+					<item name="config" xsi:type="array">
+						<item name="dataType" xsi:type="string">text</item>
+						<item name="label" xsi:type="string" translate="true">Tag</item>
+						<item name="formElement" xsi:type="string">select</item>
+						<item name="source" xsi:type="string">item</item>
+						<item name="dataScope" xsi:type="string">matritix_tag</item>
+						<item name="visible" xsi:type="boolean">true</item> 
+						<item name="default" xsi:type="string">0</item> 
+					</item> 
 				</argument>
-			</field>	 
+			</field> 
+			<field name="matritix_level">
+				<argument name="data" xsi:type="array">
+					<item name="options" xsi:type="array">
+						<item name="0" xsi:type="array">
+							<item name="label" xsi:type="string">0</item>
+							<item name="value" xsi:type="string">0</item>
+						</item>
+						<item name="1" xsi:type="array">
+							<item name="label" xsi:type="string">1</item>
+							<item name="value" xsi:type="string">1</item>
+						</item>
+						<item name="2" xsi:type="array">
+							<item name="label" xsi:type="string">2</item>
+							<item name="value" xsi:type="string">2</item>
+						</item>
+						<item name="3" xsi:type="array">
+							<item name="label" xsi:type="string">3</item>
+							<item name="value" xsi:type="string">3</item>
+						</item>
+						<item name="4" xsi:type="array">
+							<item name="label" xsi:type="string">4</item>
+							<item name="value" xsi:type="string">4</item>
+						</item>
+						<item name="5" xsi:type="array">
+							<item name="label" xsi:type="string">5</item>
+							<item name="value" xsi:type="string">5</item>
+						</item>
+					</item> 
+					<item name="config" xsi:type="array">
+						<item name="dataType" xsi:type="string">text</item>
+						<item name="label" xsi:type="string" translate="true">Tag</item>
+						<item name="formElement" xsi:type="string">select</item>
+						<item name="source" xsi:type="string">item</item>
+						<item name="dataScope" xsi:type="string">matritix_level</item>
+						<item name="visible" xsi:type="boolean">true</item> 
+						<item name="default" xsi:type="string">0</item> 
+					</item> 
+				</argument>
+			</field>
+	 	<!-- <field name="matritix_position"> -->
+				<!-- <argument name="data" xsi:type="array"> -->
+					<!-- <item name="config" xsi:type="array"> -->
+						<!-- <item name="label" xsi:type="string" translate="true">Position</item> -->
+						<!-- <item name="dataType" xsi:type="string">text</item> -->
+						<!-- <item name="formElement" xsi:type="string">input</item> -->
+						<!-- <item name="dataScope" xsi:type="string">matritix_position</item> -->
+						<!-- <item name="component" xsi:type="string">Magento_Catalog/js/form/element/input</item>  -->
+						<!-- <item name="visible" xsi:type="boolean">true</item>  -->
+						<!-- <item name="colspan" xsi:type="string">1</item> -->
+						<!-- <item name="placeholder" xsi:type="string">order of element</item>  -->
+						<!-- <item name="validation" xsi:type="array"> -->
+							<!-- <item name="validate-digits" xsi:type="boolean">true</item> -->
+						<!-- </item> -->
+					<!-- </item> -->
+				<!-- </argument> -->
+			<!-- </field>	 -->
+                <field name="position">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">number</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="componentType" xsi:type="string">field</item>
+                            <item name="label" xsi:type="string" translate="true">Position</item>
+                            <item name="dataScope" xsi:type="string">position</item>
+                            <item name="visible" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                </field>			
             <actionDelete>
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">

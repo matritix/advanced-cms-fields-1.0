@@ -28,8 +28,7 @@ class Uploadfiles extends \Magento\Backend\App\Action
         parent::__construct($context);
         $this->FilesUploader = $FilesUploader;
         $this->request       = $request;
-
-    }//end __construct()
+    } //end __construct()
 
 
     /**
@@ -62,11 +61,10 @@ class Uploadfiles extends \Magento\Backend\App\Action
                 'error'     => $e->getMessage(),
                 'errorcode' => $e->getCode(),
             ];
-        }//end try
+        } //end try
 
         return $this->resultFactory->create(ResultFactory::TYPE_JSON)->setData($result);
-
-    }//end execute()
+    } //end execute()
 
 
 }//end class
